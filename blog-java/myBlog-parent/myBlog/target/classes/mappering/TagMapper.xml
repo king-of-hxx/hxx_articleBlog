@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hxx.dao.mapper.TagMapper">
+
+    <sql id="all">
+        id,avatar,tag_name as tagName
+    </sql>
+    <select id="findTagId" resultType="com.hxx.dao.pojo.Tag">
+        select <include refid="all"></include> from ms_tag
+        <where>
+            id in
+            (select tag_id from ms_article_tag where article_id = #{tagId})
+        </where>
+    </select>
+
+    <select id="findHotTagById" parameterType="java.lang.Integer" resultType="int">
+        select tag_id from ms_article_tag group by tag_id order by count(*) desc limit #{limit}
+    </select>
+    <select id="findHotTagByTagId" parameterType="int" resultType="com.hxx.vo.TagVo">
+        select id, tag_name from ms_tag where id in
+            <foreach collection="list" item="tagId" index="index" separator="," open="(" close=")">
+                #{tagId}
+            </foreach>
+    </select>
+
+</mapper>
