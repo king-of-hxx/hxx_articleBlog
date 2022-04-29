@@ -44,6 +44,12 @@ export default {
     this.getHotTags()
     this.listArchives()
   },
+  activated() {
+    this.getHotArtices()
+    this.getNewArtices()
+    this.getHotTags()
+    this.listArchives()
+  },
   data() {
     return {
       hotTags: [],

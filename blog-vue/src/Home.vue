@@ -25,7 +25,7 @@ export default {
   name: 'Home',
   data() {
     return {
-      activeIndex: '/',
+      activeIndex: '/index',
       footerShow: true
     }
   },
@@ -39,7 +39,7 @@ export default {
     })
   },
   beforeRouteUpdate(to, from, next) {
-    if (to.path == '/') {
+    if (to.path == '/index') {
       this.footerShow = true
     } else {
       this.footerShow = false

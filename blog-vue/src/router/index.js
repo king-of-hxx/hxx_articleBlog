@@ -35,12 +35,19 @@ const router = new Router({
       }
     },
     {
-      path: "",
+      path: "/",
+      name: "TopPage",
+      component: r =>
+        require.ensure([], () => r(require("@/TopPage")), "topPage")
+    },
+    {
+      path: "/home",
       name: "Home",
       component: Home,
+      redirect: "/index",
       children: [
         {
-          path: "/",
+          path: "/index",
           component: r =>
             require.ensure([], () => r(require("@/views/Index")), "index")
         },

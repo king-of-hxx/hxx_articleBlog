@@ -10,7 +10,7 @@
 
       <el-col v-if="!simple" :span="16">
         <el-menu :router=true menu-trigger="click" active-text-color="#5FB878" :default-active="activeIndex" mode="horizontal">
-          <el-menu-item index="/">首页</el-menu-item>
+          <el-menu-item index="/index">首页</el-menu-item>
           <el-menu-item index="/category/all">文章分类</el-menu-item>
           <el-menu-item index="/tag/all">标签</el-menu-item>
           <el-menu-item index="/archives">文章归档</el-menu-item>
@@ -79,7 +79,7 @@ export default {
     logout() {
       let that = this
       this.$store.dispatch('logout').then(() => {
-        this.$router.push({ path: '/' })
+        this.$router.push({ path: '/index' })
       }).catch((error) => {
         if (error !== 'error') {
           that.$message({ message: error, type: 'error', showClose: true });
