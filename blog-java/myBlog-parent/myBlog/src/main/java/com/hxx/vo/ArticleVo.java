@@ -37,4 +37,6 @@ public class ArticleVo {
 
     private CategoryVo category;
 
+    private Long total;
+
 }

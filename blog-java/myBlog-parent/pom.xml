@@ -11,6 +11,7 @@
 
     <modules>
         <module>myBlog</module>
+        <module>myBlog-admin</module>
     </modules>
 
     <parent>

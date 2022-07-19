@@ -21,11 +21,11 @@ public class UploadController {
 
     @PostMapping
     public Result upload(@RequestParam("image") MultipartFile file){
-        String fileName = UUID.randomUUID().toString() + "." + StringUtils.substringAfterLast(file.getOriginalFilename(),".");
-        boolean upload = qiniuUtils.upload(file, fileName);
-        if(upload){
-           return Result.success(QiniuUtils.url + fileName);
-        }
-        return Result.fail(10001,"上传图片失败！");
+            String fileName = UUID.randomUUID().toString() + "." + StringUtils.substringAfterLast(file.getOriginalFilename(),".");
+            boolean upload = qiniuUtils.upload(file, fileName);
+            if(upload){
+                return Result.success(QiniuUtils.url + fileName);
+            }
+            return Result.fail(10001,"上传图片失败！");
     }
 }

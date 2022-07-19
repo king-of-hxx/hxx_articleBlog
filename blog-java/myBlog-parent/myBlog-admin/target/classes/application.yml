@@ -1,0 +1,22 @@
+server:
+  port: 8889
+spring:
+  application:
+    name: myBlog_admin
+  #datasource
+  datasource:
+    url: jdbc:mysql://localhost:3306/mysql_test?characterEncoding=UTF-8&serverTimeZone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:/mappering/*.xml
+#mybatis-plus
+mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      table-prefix: ms_
+  mapper-locations: classpath:/mappering/*.xml

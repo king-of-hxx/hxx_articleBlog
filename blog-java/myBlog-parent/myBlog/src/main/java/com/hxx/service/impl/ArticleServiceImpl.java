@@ -56,14 +56,16 @@ public class ArticleServiceImpl implements ArticleService {
         lambdaQueryWrapper.select(Article::getId,Article::getTitle,Article::getViewCounts);
         lambdaQueryWrapper.last("limit " + limit);
         List<Article> HotArticles = articleMapper.selectList(lambdaQueryWrapper);
-        return Result.success(copyList(HotArticles,false,false));
+        Long limits = Long.valueOf(limit);
+        return Result.success(copyList(HotArticles,limits,false,false));
     }
 
     @Override
     public Result listArticle(PageParams pageParams) {
         Page<Article> page = new Page<>(pageParams.getPage(),pageParams.getPageSize());
         IPage<Article> articleIPage = articleMapper.listArticle(page,pageParams.getCategoryId(),pageParams.getTagId(),pageParams.getYear(),pageParams.getMonth());
-        return Result.success(copyList(articleIPage.getRecords(),true,true));
+        long total = articleIPage.getTotal();
+        return Result.success(copyList(articleIPage.getRecords(),total,true,true));
     }
 
 
@@ -111,7 +113,8 @@ public class ArticleServiceImpl implements ArticleService {
         newArticleQueryWrapper.select(Article::getId,Article::getTitle,Article::getCreateDate);
         newArticleQueryWrapper.last("limit " + limit);
         List<Article> newArticles = articleMapper.selectList(newArticleQueryWrapper);
-        return Result.success(copyList(newArticles,false,false));
+        Long limits = Long.valueOf(limit);
+        return Result.success(copyList(newArticles,limits,false,false));
     }
 
     @Override
@@ -188,14 +191,14 @@ public class ArticleServiceImpl implements ArticleService {
         return Result.success(articleVo);
     }
 
-    private List<ArticleVo> copyList(List<Article> records, Boolean isAuthor, Boolean isTags) {
+    private List<ArticleVo> copyList(List<Article> records,Long total, Boolean isAuthor, Boolean isTags) {
         List<ArticleVo> articleVoList = new ArrayList<>();
         for (Article record : records){
-            articleVoList.add(copy(record, isAuthor, isTags));
+            articleVoList.add(copy(record,total, isAuthor, isTags));
         }
         return articleVoList;
     }
-    private ArticleVo copy(Article article, Boolean isAuthor, Boolean isTags){
+    private ArticleVo copy(Article article,Long total, Boolean isAuthor, Boolean isTags){
         ArticleVo articleVo = new ArticleVo();
         BeanUtils.copyProperties(article, articleVo);
         if (isAuthor){
@@ -211,6 +214,7 @@ public class ArticleServiceImpl implements ArticleService {
         }
         articleVo.setCreateDate(new DateTime(article.getCreateDate()).toString("yyyy-MM-dd HH:mm"));
 //        articleVo.setCreateDate(timeStamp2Date(String.valueOf(article.getCreateDate())));
+        articleVo.setTotal(total);
         return articleVo;
     }
 }

@@ -10,9 +10,16 @@
   </component>
   <component name="ProjectId" id="27lsgMYEOA01DmgCTHZKwhARt8b" />
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -26,6 +33,33 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Spring Boot.AdminApp">
+    <configuration name="AdminApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="myBlog-admin" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hxx.admin.AdminApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBlogApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="myBlog" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.hxx.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.hxx.MyBlogApp" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.MyBlogApp" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -37,6 +71,9 @@
       <option name="presentableId" value="Default" />
       <updated>1649906117015</updated>
       <workItem from="1649906119892" duration="8000" />
+      <workItem from="1651919161887" duration="12000" />
+      <workItem from="1652168523337" duration="16000" />
+      <workItem from="1658219791037" duration="1322000" />
     </task>
     <servers />
   </component>
